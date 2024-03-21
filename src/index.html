@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Image with Buttons</title>
+<!--style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+    }
+    button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style-->
+</head>
+<body>
+<div class="container"> 
+    <img img-src="https://collectionapi.metmuseum.org" src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/335146/preview" alt="Centered Image">
+    <div>
+        <button onclick="buttonClicked(1)">Button 1</button>
+        <button onclick="buttonClicked(2)">Button 2</button>
+    </div>
+</div>
+
+<script>
+    function buttonClicked(buttonIndex) {
+        // Define actions for button clicks here
+        console.log("Button " + buttonIndex + " clicked");
+    }
+</script>
+</body>
+</html>
