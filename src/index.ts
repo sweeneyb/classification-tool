@@ -21,10 +21,12 @@ const createWindow = (): void => {
     },
   });
     // Define Content Security Policy
+    // TODO figure out the script-src CSP to allow handlers
   const contentSecurityPolicy = `
     default-src 'self';
     img-src https://collectionapi.metmuseum.org/;
-    style-src '*';
+    style-src 'self';
+    script-src 'self' 'unsafe-inline'; 
   `;
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     callback({
