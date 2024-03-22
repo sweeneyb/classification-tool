@@ -14,6 +14,11 @@ export const allData = {"total":9556,"objectIDs":[844978,490012,485821,207021,84
 
 But with more data in the array.  Feel free to alter "Composition" to another query per the API (https://metmuseum.github.io/#search)
 
+```
+npm i
+npm start
+```
+
 TODO:
 * Figure out how to write the sifted data to disk
 * secure the script-src CSP header
