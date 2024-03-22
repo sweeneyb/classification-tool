@@ -1,5 +1,7 @@
 A tool to help with binary classification of data, written in electron.
 
+![UI sample](./doc/images/ui-sample.png)
+
 This app uses the Met's open data access API (https://github.com/metmuseum/openaccess and api at https://metmuseum.github.io/) as a sample source of images.  The user clicks the buttons in the app to sift images into 2 categories. 
 
 To run this app:
