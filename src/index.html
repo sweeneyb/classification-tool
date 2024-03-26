@@ -16,10 +16,23 @@
 </div>
 
 <script nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
-    previous = "335146"
+    previous = 335146
+    liked = []
+    document.addEventListener("keydown", function(e) {
+        if(e.key == 'a') {
+            buttonClicked(1)
+        }
+        if(e.key == 's') {
+            buttonClicked(2)
+        }
+    })
     function buttonClicked(buttonIndex) {
         // Define actions for button clicks here
+        if ( buttonIndex == 2) {
+            liked.push(previous)
+        }
         console.log("Button " + buttonIndex + " clicked");
+        console.log("liked:  ", liked);
         data = window.myAPI.data.objectIDs
         var randomElement
         do {
