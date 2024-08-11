@@ -55,21 +55,25 @@ app.whenReady().then(() => {
   })
   ipcMain.handle('get-data', (event: Electron.IpcMainInvokeEvent, category: String) => {
     console.log("handle: get-data")
-    var completeData = '';
-    const request = net.request('https://collectionapi.metmuseum.org/public/collection/v1/search?q='+category)
-    request.on('response', (response) => {
-      console.log(`STATUS: ${response.statusCode}`)
-      response.on('data', (chunk) => {
-        completeData+= chunk
+    const myPromise = new Promise((resolve, reject) => {
+      var completeData = '';
+      const request = net.request('https://collectionapi.metmuseum.org/public/collection/v1/search?q='+category)
+      request.on('response', (response) => {
+        // console.log(`STATUS: ${response.statusCode}`)
+        response.on('data', (chunk) => {
+          completeData+= chunk
+        })
+        response.on('end', () => {
+          const jsondata = JSON.parse(completeData)
+          // console.log("jsondata: ", jsondata)
+          resolve(jsondata)
+        })
+        
       })
-      response.on('end', () => {
-        const jsondata = JSON.parse(completeData)
-        console.log("jsondata: ", jsondata)
-      })
-      
-    })
-    request.end()
-    'get-data '+ category
+      request.end()
+    });
+    
+    return myPromise
   } )
   createWindow()
 })
