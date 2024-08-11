@@ -26,11 +26,13 @@
             buttonClicked(2)
         }
     })
-    function buttonClicked(buttonIndex) {
+    async function buttonClicked(buttonIndex) {
         // Define actions for button clicks here
         if ( buttonIndex == 2) {
             liked.push(previous)
         }
+        const response = await window.myAPI.ping(buttonIndex)
+        console.log(response) // prints out 'pong'
         console.log("Button " + buttonIndex + " clicked");
         console.log("liked:  ", liked);
         data = window.myAPI.data.objectIDs
