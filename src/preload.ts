@@ -12,6 +12,7 @@ contextBridge.exposeInMainWorld(
   'myAPI', {
     MY_CONSTANT: MY_CONSTANT,
     data: allData,
-    ping: (category: String) => ipcRenderer.invoke('ping', category)
+    ping: (category: String) => ipcRenderer.invoke('ping', category),
+    getData: (category: String) => ipcRenderer.invoke('get-data', category)
   }
 );

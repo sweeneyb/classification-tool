@@ -33,6 +33,9 @@
         }
         const response = await window.myAPI.ping(buttonIndex)
         console.log(response) // prints out 'pong'
+
+        const request = await window.myAPI.getData("Composition")
+        
         console.log("Button " + buttonIndex + " clicked");
         console.log("liked:  ", liked);
         data = window.myAPI.data.objectIDs
