@@ -46,7 +46,7 @@ const createWindow = (): void => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+// app.on('ready', createWindow);
 
 app.whenReady().then(() => {
   ipcMain.handle('ping', (event: Electron.IpcMainInvokeEvent, category: String) => {
@@ -75,6 +75,9 @@ app.whenReady().then(() => {
     
     return myPromise
   } )
+  ipcMain.on('classify', (event: Electron.IpcMainInvokeEvent, what: String, rating: String) =>
+    console.log("Save to disk that ", what, "should be rated as ", rating)
+  )
   createWindow()
 })
 

@@ -19,8 +19,14 @@ npm i
 npm start
 ```
 
+DOING:
+* fetch the collection data from the API, rather than a big file on disk
+  * Got them loading; need to wire that into the main flow
+
+
 TODO:
 * Figure out how to write the sifted data to disk
+  * This should be like the API pull.  Use the IPC push to save via node APIs.
 * secure the script-src CSP header
-* fetch the collection data from the API, rather than a big file on disk
+
 * filter out missing preview images (or continue finding the next random number)

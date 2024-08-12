@@ -28,14 +28,18 @@
     })
     async function buttonClicked(buttonIndex) {
         // Define actions for button clicks here
+        var rating = "disliked"
         if ( buttonIndex == 2) {
             liked.push(previous)
+            rating = "liked"
         }
         const response = await window.myAPI.ping(buttonIndex)
         console.log(response) // prints out 'pong'
 
         const request = await window.myAPI.getData("Composition")
         console.log("request", request)
+
+        window.myAPI.classify(previous, rating)
         
         console.log("Button " + buttonIndex + " clicked");
         console.log("liked:  ", liked);

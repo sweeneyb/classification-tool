@@ -13,6 +13,7 @@ contextBridge.exposeInMainWorld(
     MY_CONSTANT: MY_CONSTANT,
     data: allData,
     ping: (category: String) => ipcRenderer.invoke('ping', category),
-    getData: (category: String) => ipcRenderer.invoke('get-data', category)
+    getData: (category: String) => ipcRenderer.invoke('get-data', category),
+    classify: (what: String, rating: string) => ipcRenderer.send('classify', what, rating)
   }
 );
