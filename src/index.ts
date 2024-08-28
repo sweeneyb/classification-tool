@@ -51,7 +51,8 @@ const createWindow = (): void => {
 app.whenReady().then(() => {
   ipcMain.handle('ping', (event: Electron.IpcMainInvokeEvent, category: String) => {
     console.log("handle: ping")
-    'pong '+ category
+    return "pong" + category
+    // return new Promise((resolve, reject) =>  resolve('pong '+ category) )
   })
   ipcMain.handle('get-data', (event: Electron.IpcMainInvokeEvent, category: String) => {
     console.log("handle: get-data")

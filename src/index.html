@@ -34,16 +34,20 @@
             rating = "liked"
         }
         const response = await window.myAPI.ping(buttonIndex)
-        console.log(response) // prints out 'pong'
+        console.log("ping response: ", response) // prints out 'pong'
 
-        const request = await window.myAPI.getData("Composition")
-        console.log("request", request)
+        
+
+        // const request = await window.myAPI.getData("Composition")
+        // console.log("request", request)
 
         window.myAPI.classify(previous, rating)
         
         console.log("Button " + buttonIndex + " clicked");
         console.log("liked:  ", liked);
         data = window.myAPI.data.objectIDs
+
+        // window.myAPI.classify(previous, liked)
         var randomElement
         do {
         const randomIndex = Math.floor(Math.random() * data.length);
@@ -55,7 +59,7 @@
         imageElement = document.getElementById("image");
         imageElement.src = url;
 
-        console.log(window.myAPI.MY_CONSTANT);  
+        // console.log("constant: ",window.myAPI.MY_CONSTANT);  
     }
 </script>
 </body>
