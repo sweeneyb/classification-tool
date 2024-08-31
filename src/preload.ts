@@ -14,6 +14,7 @@ contextBridge.exposeInMainWorld(
     data: allData,
     ping: (category: String) => ipcRenderer.invoke('ping', category),
     getData: (category: String) => ipcRenderer.invoke('get-data', category),
+    getObject: (object: String) => ipcRenderer.invoke('get-object', object),
     classify: (what: String, rating: string) => ipcRenderer.send('classify', what, rating)
   }
 );

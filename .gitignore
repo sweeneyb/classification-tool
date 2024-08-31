@@ -93,3 +93,4 @@ out/
 
 src/data*.ts
 ratings.csv
+*.csv

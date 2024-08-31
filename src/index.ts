@@ -25,7 +25,7 @@ const createWindow = (): void => {
   // TODO figure out the script-src CSP to allow handlers
   const contentSecurityPolicy = `
     default-src 'self';
-    img-src https://collectionapi.metmuseum.org/;
+    img-src https://collectionapi.metmuseum.org https://images.metmuseum.org;
     style-src 'self';
     script-src 'self' 'unsafe-inline'; 
   `;
@@ -60,6 +60,28 @@ app.whenReady().then(() => {
     const myPromise = new Promise((resolve, reject) => {
       var completeData = '';
       const request = net.request('https://collectionapi.metmuseum.org/public/collection/v1/search?q=' + category)
+      request.on('response', (response) => {
+        // console.log(`STATUS: ${response.statusCode}`)
+        response.on('data', (chunk) => {
+          completeData += chunk
+        })
+        response.on('end', () => {
+          const jsondata = JSON.parse(completeData)
+          // console.log("jsondata: ", jsondata)
+          resolve(jsondata)
+        })
+
+      })
+      request.end()
+    });
+
+    return myPromise
+  })
+  ipcMain.handle('get-object', (event: Electron.IpcMainInvokeEvent, object: String) => {
+    console.log("handle: get-data")
+    const myPromise = new Promise((resolve, reject) => {
+      var completeData = '';
+      const request = net.request('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + object)
       request.on('response', (response) => {
         // console.log(`STATUS: ${response.statusCode}`)
         response.on('data', (chunk) => {
